@@ -13,25 +13,26 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-            background: #fafafa;
-            color: #000;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: #fff;
+            color: #37352f;
+            line-height: 1.5;
+            min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
 
         header {
-            background: #fff;
-            border-bottom: 1px solid #e5e5e5;
             position: sticky;
             top: 0;
             z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid #e3e2de;
         }
 
         nav {
-            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 16px 32px;
+            padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -40,15 +41,15 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-decoration: none;
         }
 
         .logo-icon {
             width: 28px;
             height: 28px;
-            background: #000;
-            border-radius: 6px;
+            background: #37352f;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,143 +64,148 @@
         .logo-text {
             font-size: 16px;
             font-weight: 600;
-            color: #000;
-            letter-spacing: -0.3px;
+            color: #37352f;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 20px;
             align-items: center;
         }
 
         .nav-links a {
             font-size: 14px;
-            color: #666;
+            color: #787774;
             text-decoration: none;
-            transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: #000;
+            color: #37352f;
         }
 
-        .btn {
-            padding: 8px 16px;
+        .logout-btn {
             font-size: 14px;
-            font-weight: 500;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s;
+            color: #787774;
+            background: none;
             border: none;
+            cursor: pointer;
+            padding: 0;
         }
 
-        .btn-primary {
-            background: #000;
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: #1a1a1a;
-        }
-
-        .btn-danger {
-            background: #fff;
-            color: #000;
-            border: 1px solid #000;
-        }
-
-        .btn-danger:hover {
-            background: #dc2626;
-            color: #fff;
-            border-color: #dc2626;
+        .logout-btn:hover {
+            color: #c34b4b;
         }
 
         main {
-            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 80px 32px;
+            padding: 48px 24px;
         }
 
         .hero {
-            margin-bottom: 80px;
             text-align: center;
+            margin-bottom: 40px;
         }
 
         .badge {
             display: inline-block;
-            padding: 6px 12px;
-            background: #000;
-            color: #fff;
+            padding: 4px 10px;
+            background: #f1f1ef;
+            color: #787774;
             font-size: 12px;
             font-weight: 500;
-            border-radius: 20px;
-            margin-bottom: 24px;
-            letter-spacing: 0.3px;
+            border-radius: 4px;
+            margin-bottom: 16px;
         }
 
         .hero h1 {
-            font-size: 56px;
-            font-weight: 600;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-            color: #000;
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #37352f;
         }
 
         .hero p {
-            font-size: 18px;
-            color: #666;
-            max-width: 600px;
+            font-size: 16px;
+            color: #787774;
+            max-width: 480px;
             margin: 0 auto;
-            line-height: 1.7;
+        }
+
+        .features-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .feature-tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #37352f;
+            background: #f7f6f3;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .feature-tag svg {
+            color: #0f7b6c;
+        }
+
+        .feature-tag a {
+            color: #37352f;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 48px;
+            gap: 16px;
+            margin-bottom: 40px;
         }
 
         .card {
             background: #fff;
-            border-radius: 12px;
-            padding: 32px;
-            border: 1px solid #e5e5e5;
+            border: 1px solid #e3e2de;
+            border-radius: 4px;
+            padding: 20px;
         }
 
         .card-title {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 600;
-            color: #999;
+            color: #787774;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .user-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: 12px;
         }
 
         .user-item {
-            padding: 16px;
-            background: #fafafa;
-            border-radius: 8px;
+            padding: 12px;
+            background: #f7f6f3;
+            border-radius: 4px;
         }
 
         .user-label {
-            font-size: 12px;
-            color: #999;
+            font-size: 11px;
+            color: #787774;
             margin-bottom: 4px;
         }
 
         .user-value {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
-            color: #000;
+            color: #37352f;
         }
 
         .status {
@@ -211,145 +217,265 @@
         .status-dot {
             width: 8px;
             height: 8px;
-            background: #22c55e;
+            background: #0f7b6c;
             border-radius: 50%;
-            animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .token-item {
-            margin-bottom: 20px;
-        }
-
-        .token-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .token-header {
+        .github-link {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .token-label {
-            font-size: 12px;
-            color: #999;
-        }
-
-        .copy-btn {
-            padding: 4px 10px;
-            font-size: 12px;
-            background: transparent;
-            border: 1px solid #e5e5e5;
-            border-radius: 4px;
-            cursor: pointer;
-            color: #666;
-            transition: all 0.2s;
-        }
-
-        .copy-btn:hover {
-            background: #000;
-            color: #fff;
-            border-color: #000;
-        }
-
-        .token-value {
-            font-size: 13px;
-            font-family: 'Monaco', 'Consolas', monospace;
-            color: #000;
-            background: #fafafa;
+            gap: 10px;
             padding: 12px;
-            border-radius: 6px;
-            word-break: break-all;
-            line-height: 1.5;
+            background: #f7f6f3;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #37352f;
+            margin-bottom: 12px;
+        }
+
+        .github-link:hover {
+            background: #f1f1ef;
+        }
+
+        .github-link span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .resource-desc {
+            font-size: 13px;
+            color: #787774;
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+
+        .resource-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .resource-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            color: #37352f;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            padding: 6px 10px;
+            background: #f7f6f3;
+            border-radius: 4px;
+        }
+
+        .resource-links a:hover {
+            background: #f1f1ef;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #37352f;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e3e2de;
         }
 
         .endpoints {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
 
         .endpoint {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
-            padding: 20px 24px;
-            transition: all 0.2s;
-        }
-
-        .endpoint:hover {
-            border-color: #000;
+            background: #f7f6f3;
+            border-radius: 4px;
+            padding: 16px;
         }
 
         .endpoint-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .endpoint-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .method {
             font-size: 11px;
             font-weight: 600;
-            padding: 4px 8px;
-            border-radius: 4px;
-            background: #000;
+            padding: 2px 6px;
+            border-radius: 3px;
+            background: #37352f;
             color: #fff;
-            letter-spacing: 0.3px;
         }
 
         .path {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 500;
-            font-family: 'Monaco', 'Consolas', monospace;
-            color: #000;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            color: #37352f;
+        }
+
+        .try-btn {
+            font-size: 12px;
+            color: #37352f;
+            background: #fff;
+            border: 1px solid #e3e2de;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .try-btn:hover {
+            background: #f1f1ef;
+            border-color: #d2d1cd;
         }
 
         .endpoint-desc {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 12px;
+            font-size: 13px;
+            color: #787774;
+            margin-bottom: 10px;
         }
 
         .endpoint-url {
             font-size: 12px;
-            font-family: 'Monaco', 'Consolas', monospace;
-            color: #666;
-            background: #fafafa;
-            padding: 8px 12px;
-            border-radius: 4px;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            color: #787774;
+            background: #fff;
+            padding: 6px 10px;
+            border-radius: 3px;
             display: inline-block;
+            word-break: break-all;
+        }
+
+        .params-form {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e3e2de;
+            display: none;
+        }
+
+        .params-form.show {
+            display: block;
+        }
+
+        .param-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .param-label {
+            font-size: 12px;
+            color: #37352f;
+            min-width: 100px;
+            font-weight: 500;
+        }
+
+        .param-input {
+            flex: 1;
+            padding: 6px 10px;
+            font-size: 12px;
+            border: 1px solid #e3e2de;
+            border-radius: 4px;
+            background: #fff;
+            color: #37352f;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+        }
+
+        .param-input:focus {
+            outline: none;
+            border-color: #37352f;
+        }
+
+        .param-input::placeholder {
+            color: #9b9a97;
+        }
+
+        .send-btn {
+            margin-top: 8px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            background: #37352f;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .send-btn:hover {
+            background: #2f2e29;
+        }
+
+        .response-box {
+            margin-top: 12px;
+            display: none;
+        }
+
+        .response-box.show {
+            display: block;
+        }
+
+        .response-header {
+            font-size: 11px;
+            font-weight: 600;
+            color: #787774;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .response-content {
+            background: #fff;
+            border: 1px solid #e3e2de;
+            border-radius: 4px;
+            padding: 12px;
+            font-size: 12px;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            color: #37352f;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 300px;
+            overflow: auto;
+        }
+
+        .response-content.error {
+            color: #c34b4b;
+            background: #fdecea;
+            border-color: #e77b7b;
+        }
+
+        .response-content.loading {
+            color: #787774;
         }
 
         footer {
-            background: #000;
-            color: #fff;
-            padding: 32px;
+            border-top: 1px solid #e3e2de;
+            padding: 20px;
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         footer a {
-            color: #fff;
+            color: #787774;
             text-decoration: none;
             margin: 0 16px;
-            opacity: 0.7;
-            transition: opacity 0.2s;
         }
 
         footer a:hover {
-            opacity: 1;
+            color: #37352f;
         }
 
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 40px;
+                font-size: 28px;
             }
 
             .grid {
@@ -362,6 +488,15 @@
 
             .nav-links {
                 display: none;
+            }
+
+            .param-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .param-label {
+                min-width: auto;
             }
         }
     </style>
@@ -378,8 +513,9 @@
                 <span class="logo-text">OIDC</span>
             </a>
             <div class="nav-links">
+                <a href="https://github.com/ssssshql/oidc_simple" target="_blank">GitHub</a>
                 <a href="https://openid.net/connect/" target="_blank">文档</a>
-                <a href="/logout" class="btn btn-danger">退出登录</a>
+                <button class="logout-btn" onclick="window.location.href='/logout'">退出登录</button>
             </div>
         </nav>
     </header>
@@ -388,7 +524,28 @@
         <div class="hero">
             <span class="badge">OpenID Connect</span>
             <h1>身份认证服务</h1>
-            <p>基于 OAuth 2.0 和 OpenID Connect 标准的现代化身份认证系统，安全、可靠、易集成</p>
+            <p>基于 OAuth 2.0 和 OpenID Connect 标准的现代化身份认证系统</p>
+        </div>
+
+        <div class="features-bar">
+            <div class="feature-tag">
+                <svg viewBox="0 0 24 24" width="14" height="14">
+                    <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span>支持 <a href="https://getoutline.com" target="_blank">Outline</a> 知识库</span>
+            </div>
+            <div class="feature-tag">
+                <svg viewBox="0 0 24 24" width="14" height="14">
+                    <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span>Linux / Windows (amd64, arm64)</span>
+            </div>
+            <div class="feature-tag">
+                <svg viewBox="0 0 24 24" width="14" height="14">
+                    <path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+                <span>Docker 多架构支持</span>
+            </div>
         </div>
 
         <div class="grid">
@@ -419,44 +576,224 @@
                 </div>
             </div>
 
-
+            <div class="card">
+                <div class="card-title">项目资源</div>
+                <a href="https://github.com/ssssshql/oidc_simple" target="_blank" class="github-link">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>ssssshql/oidc_simple</span>
+                </a>
+                <div class="resource-desc">
+                    开源的 OIDC 认证服务，支持 Authorization Code 流程，开箱即用。
+                </div>
+                <div class="resource-links">
+                    <a href="https://github.com/ssssshql/oidc_simple" target="_blank">
+                        <span>查看源码</span>
+                        <svg viewBox="0 0 24 24" width="12" height="12">
+                            <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/ssssshql/oidc_simple/releases" target="_blank">
+                        <span>下载发布版</span>
+                        <svg viewBox="0 0 24 24" width="12" height="12">
+                            <path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="card-title">API 端点</div>
+        <div class="section-title">API 端点</div>
         <div class="endpoints">
             <div class="endpoint">
                 <div class="endpoint-header">
-                    <span class="method">GET</span>
-                    <span class="path">/v1/authorize</span>
+                    <div class="endpoint-left">
+                        <span class="method">GET</span>
+                        <span class="path">/v1/authorize</span>
+                    </div>
+                    <button class="try-btn" onclick="tryAuthorize()">在线调试</button>
                 </div>
                 <div class="endpoint-desc">授权端点 - 启动 OAuth 2.0 授权码流程</div>
-                <div class="endpoint-url">http://localhost:8080/v1/authorize?redirect_uri=URI&state=STATE</div>
+                <div class="endpoint-url" id="authorize-url"></div>
+                <div class="response-box" id="authorize-response">
+                    <div class="response-header">响应</div>
+                    <div class="response-content"></div>
+                </div>
             </div>
 
             <div class="endpoint">
                 <div class="endpoint-header">
-                    <span class="method">POST</span>
-                    <span class="path">/v1/token</span>
+                    <div class="endpoint-left">
+                        <span class="method">POST</span>
+                        <span class="path">/v1/token</span>
+                    </div>
+                    <button class="try-btn" onclick="toggleParams('token-params')">在线调试</button>
                 </div>
                 <div class="endpoint-desc">令牌端点 - 使用授权码交换访问令牌</div>
-                <div class="endpoint-url">http://localhost:8080/v1/token</div>
+                <div class="endpoint-url" id="token-url"></div>
+                <div class="params-form" id="token-params">
+                    <div class="param-row">
+                        <label class="param-label">grant_type</label>
+                        <input type="text" class="param-input" id="token-grant-type" value="authorization_code" placeholder="authorization_code">
+                    </div>
+                    <div class="param-row">
+                        <label class="param-label">code</label>
+                        <input type="text" class="param-input" id="token-code" placeholder="授权码">
+                    </div>
+                    <div class="param-row">
+                        <label class="param-label">redirect_uri</label>
+                        <input type="text" class="param-input" id="token-redirect-uri" placeholder="回调地址">
+                    </div>
+                    <div class="param-row">
+                        <label class="param-label">client_id</label>
+                        <input type="text" class="param-input" id="token-client-id" placeholder="客户端ID">
+                    </div>
+                    <button class="send-btn" onclick="tryToken()">发送请求</button>
+                </div>
+                <div class="response-box" id="token-response">
+                    <div class="response-header">响应</div>
+                    <div class="response-content"></div>
+                </div>
             </div>
 
             <div class="endpoint">
                 <div class="endpoint-header">
-                    <span class="method">GET</span>
-                    <span class="path">/v1/userinfo</span>
+                    <div class="endpoint-left">
+                        <span class="method">GET</span>
+                        <span class="path">/v1/userinfo</span>
+                    </div>
+                    <button class="try-btn" onclick="toggleParams('userinfo-params')">在线调试</button>
                 </div>
                 <div class="endpoint-desc">用户信息端点 - 获取已认证用户的详细信息</div>
-                <div class="endpoint-url">http://localhost:8080/v1/userinfo</div>
+                <div class="endpoint-url" id="userinfo-url"></div>
+                <div class="params-form" id="userinfo-params">
+                    <div class="param-row">
+                        <label class="param-label">access_token</label>
+                        <input type="text" class="param-input" id="userinfo-token" placeholder="访问令牌 (Bearer Token)">
+                    </div>
+                    <button class="send-btn" onclick="tryUserinfo()">发送请求</button>
+                </div>
+                <div class="response-box" id="userinfo-response">
+                    <div class="response-header">响应</div>
+                    <div class="response-content"></div>
+                </div>
             </div>
         </div>
     </main>
 
     <footer>
+        <a href="https://github.com/ssssshql/oidc_simple" target="_blank">GitHub</a>
         <a href="https://openid.net/connect/" target="_blank">OpenID Connect</a>
         <a href="https://oauth.net/2/" target="_blank">OAuth 2.0</a>
         <a href="https://jwt.io/" target="_blank">JWT</a>
     </footer>
+
+    <script>
+        const baseUrl = window.location.origin;
+
+        // 初始化URL显示
+        document.getElementById('authorize-url').textContent = baseUrl + '/v1/authorize?redirect_uri=URI&state=STATE';
+        document.getElementById('token-url').textContent = baseUrl + '/v1/token';
+        document.getElementById('userinfo-url').textContent = baseUrl + '/v1/userinfo';
+
+        // 初始化默认值
+        document.getElementById('token-redirect-uri').value = baseUrl + '/';
+
+        function toggleParams(paramsId) {
+            const paramsEl = document.getElementById(paramsId);
+            paramsEl.classList.toggle('show');
+        }
+
+        function showResponse(responseBox, content, isError = false, isLoading = false) {
+            const contentEl = responseBox.querySelector('.response-content');
+            responseBox.classList.add('show');
+            
+            if (isLoading) {
+                contentEl.className = 'response-content loading';
+            } else if (isError) {
+                contentEl.className = 'response-content error';
+            } else {
+                contentEl.className = 'response-content';
+            }
+            
+            contentEl.textContent = content;
+        }
+
+        async function tryAuthorize() {
+            const responseBox = document.getElementById('authorize-response');
+            showResponse(responseBox, '正在跳转授权页面...', false, true);
+            
+            const redirectUri = encodeURIComponent(window.location.origin + '/');
+            const state = 'test_state_' + Date.now();
+            const url = `${baseUrl}/v1/authorize?redirect_uri=${redirectUri}&state=${state}`;
+            
+            setTimeout(() => {
+                window.location.href = url;
+            }, 500);
+        }
+
+        async function tryToken() {
+            const responseBox = document.getElementById('token-response');
+            
+            const grantType = document.getElementById('token-grant-type').value || 'authorization_code';
+            const code = document.getElementById('token-code').value;
+            const redirectUri = document.getElementById('token-redirect-uri').value;
+            const clientId = document.getElementById('token-client-id').value;
+
+            if (!code) {
+                showResponse(responseBox, '请输入授权码 (code)', true);
+                return;
+            }
+
+            showResponse(responseBox, '请求中...', false, true);
+            
+            try {
+                const params = new URLSearchParams();
+                params.append('grant_type', grantType);
+                params.append('code', code);
+                if (redirectUri) params.append('redirect_uri', redirectUri);
+                if (clientId) params.append('client_id', clientId);
+
+                const response = await fetch(baseUrl + '/v1/token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: params.toString()
+                });
+                
+                const data = await response.json();
+                showResponse(responseBox, JSON.stringify(data, null, 2), !response.ok);
+            } catch (error) {
+                showResponse(responseBox, '请求失败: ' + error.message, true);
+            }
+        }
+
+        async function tryUserinfo() {
+            const responseBox = document.getElementById('userinfo-response');
+            const accessToken = document.getElementById('userinfo-token').value;
+
+            showResponse(responseBox, '请求中...', false, true);
+            
+            try {
+                const headers = {};
+                if (accessToken) {
+                    headers['Authorization'] = 'Bearer ' + accessToken;
+                }
+
+                const response = await fetch(baseUrl + '/v1/userinfo', {
+                    method: 'GET',
+                    headers: headers,
+                    credentials: 'include'
+                });
+                
+                const data = await response.json();
+                showResponse(responseBox, JSON.stringify(data, null, 2), !response.ok);
+            } catch (error) {
+                showResponse(responseBox, '请求失败: ' + error.message, true);
+            }
+        }
+    </script>
 </body>
 </html>

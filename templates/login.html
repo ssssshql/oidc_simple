@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登录</title>
+    <title>登录 - OIDC</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <style>
         * {
@@ -13,173 +13,166 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-            background: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 24px;
+            background: #fff;
             -webkit-font-smoothing: antialiased;
         }
 
         .container {
             width: 100%;
-            max-width: 400px;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 48px;
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+            max-width: 360px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 40px;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
         }
 
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: #000;
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            background: #37352f;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .logo-icon svg {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             fill: #fff;
         }
 
         .logo-text {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
-            color: #000;
-            letter-spacing: -0.3px;
+            color: #37352f;
         }
 
         h1 {
             font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-            color: #000;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 6px;
+            color: #37352f;
         }
 
         .subtitle {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 40px;
+            font-size: 14px;
+            color: #787774;
+            text-align: center;
+            margin-bottom: 28px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 14px;
         }
 
         label {
             display: block;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
-            color: #000;
-            margin-bottom: 8px;
+            color: #37352f;
+            margin-bottom: 6px;
         }
 
-        input {
+        input[type="text"],
+        input[type="password"] {
             width: 100%;
-            padding: 14px 16px;
-            font-size: 15px;
-            border: 1px solid #e5e5e5;
-            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            border: 1px solid #e3e2de;
+            border-radius: 4px;
             background: #fff;
-            transition: all 0.2s;
+            color: #37352f;
+            transition: border-color 0.15s;
+        }
+
+        input::placeholder {
+            color: #9b9a97;
         }
 
         input:focus {
             outline: none;
-            border-color: #000;
-            box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+            border-color: #37352f;
         }
 
         .options {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 24px 0;
+            margin: 16px 0;
             font-size: 13px;
         }
 
         .remember {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             cursor: pointer;
         }
 
         .remember input {
-            width: 16px;
-            height: 16px;
-            margin: 0;
+            width: 14px;
+            height: 14px;
+            accent-color: #37352f;
             cursor: pointer;
         }
 
         .remember span {
-            color: #666;
+            color: #37352f;
             user-select: none;
         }
 
         .forgot {
-            color: #000;
-            text-decoration: none;
-            font-weight: 500;
+            color: #37352f;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
 
         .forgot:hover {
-            text-decoration: underline;
+            color: #787774;
         }
 
         button {
             width: 100%;
-            padding: 14px;
-            font-size: 15px;
+            padding: 10px;
+            font-size: 14px;
             font-weight: 500;
-            background: #000;
+            background: #37352f;
             color: #fff;
             border: none;
-            border-radius: 8px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: background 0.15s;
         }
 
         button:hover {
-            background: #1a1a1a;
-            transform: translateY(-1px);
-        }
-
-        button:active {
-            transform: translateY(0);
+            background: #2f2e29;
         }
 
         button:disabled {
-            opacity: 0.6;
+            opacity: 0.5;
             cursor: not-allowed;
-            transform: none;
         }
 
         .error {
-            background: #fef2f2;
-            border: 1px solid #fee2e2;
-            color: #dc2626;
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-bottom: 24px;
+            background: #fdecea;
+            border: 1px solid #e77b7b;
+            color: #c34b4b;
+            padding: 10px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 16px;
             display: none;
         }
 
@@ -188,70 +181,63 @@
         }
 
         .footer {
-            margin-top: 32px;
+            margin-top: 20px;
             text-align: center;
             font-size: 13px;
-            color: #666;
+            color: #787774;
         }
 
         .footer a {
-            color: #000;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .footer a:hover {
+            color: #37352f;
             text-decoration: underline;
+            text-underline-offset: 2px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="card">
-            <div class="logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-                    </svg>
-                </div>
-                <span class="logo-text">OIDC</span>
+        <div class="logo">
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                </svg>
+            </div>
+            <span class="logo-text">OIDC</span>
+        </div>
+
+        <h1>欢迎回来</h1>
+        <p class="subtitle">登录以继续访问您的账户</p>
+
+        <div id="error" class="error"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" id="username" name="username" placeholder="输入用户名" required autocomplete="username">
             </div>
 
-            <h1>欢迎回来</h1>
-            <p class="subtitle">登录以继续访问您的账户</p>
-
-            <div id="error" class="error"></div>
-
-            <form id="loginForm">
-                <div class="form-group">
-                    <label>用户名</label>
-                    <input type="text" id="username" name="username" placeholder="输入用户名" required autocomplete="username">
-                </div>
-
-                <div class="form-group">
-                    <label>密码</label>
-                    <input type="password" id="password" name="password" placeholder="输入密码" required autocomplete="current-password">
-                </div>
-
-                <div class="options">
-                    <label class="remember">
-                        <input type="checkbox" id="remember" name="remember">
-                        <span>记住我</span>
-                    </label>
-                    <a href="#" class="forgot">忘记密码？</a>
-                </div>
-
-                <button type="submit" id="submitBtn">登录</button>
-            </form>
-
-            <div class="footer">
-                <a href="/">了解更多</a> 关于 OIDC 认证
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" id="password" name="password" placeholder="输入密码" required autocomplete="current-password">
             </div>
+
+            <div class="options">
+                <label class="remember">
+                    <input type="checkbox" id="remember" name="remember">
+                    <span>记住我</span>
+                </label>
+                <a href="#" class="forgot">忘记密码？</a>
+            </div>
+
+            <button type="submit" id="submitBtn">登录</button>
+        </form>
+
+        <div class="footer">
+            <a href="/">了解更多</a> 关于 OIDC 认证
         </div>
     </div>
 
     <script>
-        // 从模板获取 redirect 参数
         const redirectParam = {{if .redirect}}"{{.redirect}}"{{else}}""{{end}};
         
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
@@ -262,12 +248,10 @@
             const submitBtn = document.getElementById('submitBtn');
             const errorDiv = document.getElementById('error');
             
-            // 禁用按钮
             submitBtn.disabled = true;
             submitBtn.textContent = '登录中...';
             
             try {
-                // 构建请求体，包含 redirect 参数
                 let requestBody = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
                 if (redirectParam) {
                     requestBody += `&redirect=${encodeURIComponent(redirectParam)}`;
@@ -284,10 +268,8 @@
                 const data = await response.json();
                 
                 if (response.ok && data.success) {
-                    // 登录成功，跳转到指定页面
                     window.location.href = data.redirect || '/';
                 } else {
-                    // 显示错误信息
                     errorDiv.textContent = data.error || '登录失败';
                     errorDiv.classList.add('show');
                     setTimeout(() => errorDiv.classList.remove('show'), 3000);
@@ -297,7 +279,6 @@
                 errorDiv.classList.add('show');
                 setTimeout(() => errorDiv.classList.remove('show'), 3000);
             } finally {
-                // 恢复按钮状态
                 submitBtn.disabled = false;
                 submitBtn.textContent = '登录';
             }
