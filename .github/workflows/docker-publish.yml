@@ -95,7 +95,7 @@ jobs:
       # 推送 tag 时创建 Release
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@main
+        uses: softprops/action-gh-release@master
         with:
           files: dist/*
           generate_release_notes: true
