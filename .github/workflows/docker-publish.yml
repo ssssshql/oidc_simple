@@ -63,6 +63,8 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/}
           [ "$VERSION" = "$GITHUB_REF" ] && VERSION="dev"
           
+          mkdir -p dist
+          
           # Linux amd64
           CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o oidc-simple .
           tar -czvf dist/oidc-simple-${VERSION}-linux-amd64.tar.gz oidc-simple templates assets
