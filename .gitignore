@@ -1,0 +1,50 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+ssssshql/oidc-simple
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+
+# Dependency directories
+vendor/
+
+# Build output
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Application specific
+private.pem
+public.pem
+config.yml
+config.yml
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+.codebuddy

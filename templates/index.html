@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OIDC 认证服务</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            background: #fafafa;
+            color: #000;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: #000;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: #fff;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #1a1a1a;
+        }
+
+        .btn-danger {
+            background: #fff;
+            color: #000;
+            border: 1px solid #000;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+            color: #fff;
+            border-color: #dc2626;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 32px;
+        }
+
+        .hero {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #000;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            letter-spacing: 0.3px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            color: #000;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 32px;
+            border: 1px solid #e5e5e5;
+        }
+
+        .card-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .user-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .user-item {
+            padding: 16px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+
+        .user-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+
+        .user-value {
+            font-size: 15px;
+            font-weight: 500;
+            color: #000;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .token-item {
+            margin-bottom: 20px;
+        }
+
+        .token-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .token-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .token-label {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .copy-btn {
+            padding: 4px 10px;
+            font-size: 12px;
+            background: transparent;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        .token-value {
+            font-size: 13px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            color: #000;
+            background: #fafafa;
+            padding: 12px;
+            border-radius: 6px;
+            word-break: break-all;
+            line-height: 1.5;
+        }
+
+        .endpoints {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .endpoint {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 20px 24px;
+            transition: all 0.2s;
+        }
+
+        .endpoint:hover {
+            border-color: #000;
+        }
+
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .method {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #000;
+            color: #fff;
+            letter-spacing: 0.3px;
+        }
+
+        .path {
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Monaco', 'Consolas', monospace;
+            color: #000;
+        }
+
+        .endpoint-desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .endpoint-url {
+            font-size: 12px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            color: #666;
+            background: #fafafa;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 32px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 16px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .user-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                    </svg>
+                </div>
+                <span class="logo-text">OIDC</span>
+            </a>
+            <div class="nav-links">
+                <a href="https://openid.net/connect/" target="_blank">文档</a>
+                <a href="/logout" class="btn btn-danger">退出登录</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+            <span class="badge">OpenID Connect</span>
+            <h1>身份认证服务</h1>
+            <p>基于 OAuth 2.0 和 OpenID Connect 标准的现代化身份认证系统，安全、可靠、易集成</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">用户信息</div>
+                <div class="user-grid">
+                    <div class="user-item">
+                        <div class="user-label">状态</div>
+                        <div class="user-value">
+                            <span class="status">
+                                <span class="status-dot"></span>
+                                在线
+                            </span>
+                        </div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-label">用户名</div>
+                        <div class="user-value">{{ .user.Name }}</div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-label">邮箱</div>
+                        <div class="user-value">{{ .user.Email }}</div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-label">认证方式</div>
+                        <div class="user-value">Authorization Code</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">访问令牌</div>
+                <div class="token-item">
+                    <div class="token-header">
+                        <span class="token-label">Access Token</span>
+                        <button class="copy-btn" onclick="copyToken('demo_access_token', this)">复制</button>
+                    </div>
+                    <div class="token-value">demo_access_token_{{ .user.Username }}</div>
+                </div>
+                <div class="token-item">
+                    <div class="token-header">
+                        <span class="token-label">ID Token (JWT)</span>
+                        <button class="copy-btn" onclick="copyToken('demo_id_token', this)">复制</button>
+                    </div>
+                    <div class="token-value">eyJhbGciOiJSUzI1NiIsInN1YiI6Int7LnVzZXIuVXNlcm5hbWV9fX0...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-title">API 端点</div>
+        <div class="endpoints">
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/v1/authorize</span>
+                </div>
+                <div class="endpoint-desc">授权端点 - 启动 OAuth 2.0 授权码流程</div>
+                <div class="endpoint-url">http://localhost:8080/v1/authorize?redirect_uri=URI&state=STATE</div>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method">POST</span>
+                    <span class="path">/v1/token</span>
+                </div>
+                <div class="endpoint-desc">令牌端点 - 使用授权码交换访问令牌</div>
+                <div class="endpoint-url">http://localhost:8080/v1/token</div>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method">GET</span>
+                    <span class="path">/v1/userinfo</span>
+                </div>
+                <div class="endpoint-desc">用户信息端点 - 获取已认证用户的详细信息</div>
+                <div class="endpoint-url">http://localhost:8080/v1/userinfo</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="https://openid.net/connect/" target="_blank">OpenID Connect</a>
+        <a href="https://oauth.net/2/" target="_blank">OAuth 2.0</a>
+        <a href="https://jwt.io/" target="_blank">JWT</a>
+    </footer>
+
+    <script>
+        function copyToken(token, btn) {
+            navigator.clipboard.writeText(token).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = '已复制';
+                btn.style.background = '#000';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#000';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.style.borderColor = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
