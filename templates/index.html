@@ -419,23 +419,7 @@
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-title">访问令牌</div>
-                <div class="token-item">
-                    <div class="token-header">
-                        <span class="token-label">Access Token</span>
-                        <button class="copy-btn" onclick="copyToken('demo_access_token', this)">复制</button>
-                    </div>
-                    <div class="token-value">demo_access_token_{{ .user.Username }}</div>
-                </div>
-                <div class="token-item">
-                    <div class="token-header">
-                        <span class="token-label">ID Token (JWT)</span>
-                        <button class="copy-btn" onclick="copyToken('demo_id_token', this)">复制</button>
-                    </div>
-                    <div class="token-value">eyJhbGciOiJSUzI1NiIsInN1YiI6Int7LnVzZXIuVXNlcm5hbWV9fX0...</div>
-                </div>
-            </div>
+
         </div>
 
         <div class="card-title">API 端点</div>
@@ -474,23 +458,5 @@
         <a href="https://oauth.net/2/" target="_blank">OAuth 2.0</a>
         <a href="https://jwt.io/" target="_blank">JWT</a>
     </footer>
-
-    <script>
-        function copyToken(token, btn) {
-            navigator.clipboard.writeText(token).then(() => {
-                const originalText = btn.textContent;
-                btn.textContent = '已复制';
-                btn.style.background = '#000';
-                btn.style.color = '#fff';
-                btn.style.borderColor = '#000';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.style.background = '';
-                    btn.style.color = '';
-                    btn.style.borderColor = '';
-                }, 2000);
-            });
-        }
-    </script>
 </body>
 </html>
