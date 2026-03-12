@@ -1,5 +1,5 @@
 # 构建阶段
-FROM golang:1.26-alpine AS builder
+FROM --platform=$BUILDPLATFORM golang:1.26-alpine AS builder
 
 WORKDIR /app
 
@@ -10,8 +10,11 @@ RUN go mod download
 # 复制源代码
 COPY . .
 
-# 构建可执行文件
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o oidc-simple .
+# 构建参数：目标平台
+ARG TARGETOS TARGETARCH
+
+# 构建可执行文件（原生交叉编译，无需 QEMU）
+RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -a -installsuffix cgo -o oidc-simple .
 
 # 运行阶段
 FROM alpine:latest
