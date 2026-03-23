@@ -31,16 +31,24 @@ func main() {
 
 	router := gin.Default()
 
-	// 加载模板
-	router.LoadHTMLGlob("templates/*")
+	// 从嵌入的文件系统加载模板
+	templatesFS, err := GetTemplatesFS()
+	if err != nil {
+		log.Fatalf("加载模板文件系统失败: %v", err)
+	}
+	router.HTMLRender = gin.HTMLFS(templatesFS)
 
 	// 静态文件路由（无需认证）
 	router.GET("/login", controller.Login)
 	router.POST("/login", controller.HandleLogin)
 	router.GET("/logout", controller.Logout)
 	router.GET("favicon.ico", func(c *gin.Context) {
-		file, _ := os.ReadFile("assets/favicon.ico")
-		c.Data(http.StatusOK, "image/x-icon", file)
+		favicon, err := GetFavicon()
+		if err != nil {
+			c.Status(http.StatusNotFound)
+			return
+		}
+		c.Data(http.StatusOK, "image/x-icon", favicon)
 	})
 
 	// JWKS 端点（公钥端点，用于验证 Token）

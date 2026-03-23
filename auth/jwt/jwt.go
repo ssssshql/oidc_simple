@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
@@ -61,6 +62,16 @@ func InitKeysFromEnv() error {
 
 // generateKeyPair 生成 RSA 密钥对
 func generateKeyPair(privateKeyPath, publicKeyPath string) error {
+	// 确保目录存在
+	privateKeyDir := filepath.Dir(privateKeyPath)
+	if err := os.MkdirAll(privateKeyDir, 0700); err != nil {
+		return fmt.Errorf("创建密钥目录失败: %w", err)
+	}
+	publicKeyDir := filepath.Dir(publicKeyPath)
+	if err := os.MkdirAll(publicKeyDir, 0700); err != nil {
+		return fmt.Errorf("创建公钥目录失败: %w", err)
+	}
+
 	// 生成 2048 位的 RSA 密钥
 	privKey, err := rsa.GenerateKey(rand.Reader, 2048)
 	if err != nil {

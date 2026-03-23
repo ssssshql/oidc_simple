@@ -33,8 +33,6 @@ RUN apk --no-cache add ca-certificates tzdata && \
 
 # 从构建阶段复制可执行文件
 COPY --from=builder /app/oidc-simple .
-COPY --from=builder /app/templates ./templates
-COPY --from=builder /app/assets ./assets
 
 # 暴露端口
 EXPOSE 8080
