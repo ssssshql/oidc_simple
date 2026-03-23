@@ -98,40 +98,29 @@ users:
 // GetUser 根据用户名获取用户信息
 func GetUser(username string) *User {
 	if config == nil {
-		fmt.Println("[DEBUG] config 是 nil！")
 		return nil
 	}
 
-	fmt.Printf("[DEBUG] config.Users 长度: %d\n", len(config.Users))
-
 	for i := range config.Users {
-		fmt.Printf("[DEBUG] 检查用户: %s\n", config.Users[i].Username)
 		if config.Users[i].Username == username {
-			fmt.Printf("[DEBUG] 找到用户: %+v\n", config.Users[i])
 			return &config.Users[i]
 		}
 	}
 
-	fmt.Printf("[DEBUG] 未找到用户: %s\n", username)
 	return nil
 }
 
 // ValidateUser 验证用户名和密码
 func ValidateUser(username, password string) *User {
-	fmt.Printf("[DEBUG] ValidateUser 被调用: %s / %s\n", username, password)
-
 	user := GetUser(username)
 	if user == nil {
-		fmt.Println("[DEBUG] 用户不存在")
 		return nil
 	}
 
 	// 明文密码验证
 	if user.Password == password {
-		fmt.Println("[DEBUG] 密码验证成功")
 		return user
 	}
 
-	fmt.Printf("[DEBUG] 密码不匹配: 期望=%s, 实际=%s\n", user.Password, password)
 	return nil
 }

@@ -82,7 +82,7 @@ jobs:
           
           # Windows amd64
           CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o oidc-simple.exe .
-          upx -9 oidc-simple.exe
+          upx --best --lzma oidc-simple.exe
           zip -r dist/oidc-simple-${VERSION}-windows-amd64.zip oidc-simple.exe
 
       - name: Upload artifacts
