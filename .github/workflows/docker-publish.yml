@@ -73,17 +73,17 @@ jobs:
           # Linux amd64
           CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o oidc-simple .
           upx --best --lzma oidc-simple
-          tar -czvf dist/oidc-simple-${VERSION}-linux-amd64.tar.gz oidc-simple templates assets
+          tar -czvf dist/oidc-simple-${VERSION}-linux-amd64.tar.gz oidc-simple
           
           # Linux arm64
           CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-s -w" -o oidc-simple .
           upx --best --lzma oidc-simple
-          tar -czvf dist/oidc-simple-${VERSION}-linux-arm64.tar.gz oidc-simple templates assets
+          tar -czvf dist/oidc-simple-${VERSION}-linux-arm64.tar.gz oidc-simple
           
           # Windows amd64
           CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o oidc-simple.exe .
-          upx --best --lzma oidc-simple.exe
-          zip -r dist/oidc-simple-${VERSION}-windows-amd64.zip oidc-simple.exe templates assets
+          upx -9 oidc-simple.exe
+          zip -r dist/oidc-simple-${VERSION}-windows-amd64.zip oidc-simple.exe
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7.0.0
