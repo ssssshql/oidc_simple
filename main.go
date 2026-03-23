@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -36,7 +37,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("加载模板文件系统失败: %v", err)
 	}
-	router.HTMLRender = gin.HTMLFS(templatesFS)
+	tmpl := template.Must(template.New("").ParseFS(templatesFS, "*.html"))
+	router.SetHTMLTemplate(tmpl)
 
 	// 静态文件路由（无需认证）
 	router.GET("/login", controller.Login)
