@@ -63,6 +63,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y upx-ucl
 
+      - name: Install rsrc for Windows icon
+        run: go install github.com/akavel/rsrc@latest
+
       - name: Build release packages
         run: |
           VERSION=${GITHUB_REF#refs/tags/}
@@ -80,8 +83,10 @@ jobs:
           upx --best --lzma oidc-simple
           tar -czvf dist/oidc-simple-${VERSION}-linux-arm64.tar.gz oidc-simple
           
-          # Windows amd64
+          # Windows amd64 - 生成资源文件（图标）
+          ~/go/bin/rsrc -ico assets/favicon.ico -o rsrc.syso
           CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -o oidc-simple.exe .
+          rm rsrc.syso
           upx --best --lzma oidc-simple.exe
           zip -r dist/oidc-simple-${VERSION}-windows-amd64.zip oidc-simple.exe
 
